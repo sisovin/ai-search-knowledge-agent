@@ -1,0 +1,14 @@
+# Environment variables
+.env
+
+# Local dev artifacts
+.DS_Store
+node_modules/
+*.log
+
+# Local Supabase
+.supabase/
+supabase/.temp/
+
+# Deno cache
+.deno/

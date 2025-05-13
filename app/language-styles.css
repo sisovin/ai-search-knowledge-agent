@@ -1,0 +1,119 @@
+/* Language Switch Styles */
+.lang-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.lang-en {
+  background-color: hsl(var(--lang-en) / 15%);
+  color: hsl(var(--lang-en));
+}
+
+.lang-kh {
+  background-color: hsl(var(--lang-kh) / 15%);
+  color: hsl(var(--lang-kh));
+}
+
+/* Language-specific typography adjustments */
+[lang="en"] {
+  line-height: var(--line-height-normal);
+  letter-spacing: 0;
+}
+
+[lang="kh"] {
+  line-height: var(--line-height-relaxed);
+  letter-spacing: 0.01em;
+  font-family: var(--font-sans), 'Khmer OS', 'Khmer OS System', 'Khmer OS Battambang';
+}
+
+/* Language specific button padding */
+[lang="en"] .enhanced-btn {
+  padding: 0.5rem 1rem;
+}
+
+[lang="kh"] .enhanced-btn {
+  padding: 0.5rem 1.25rem;
+}
+
+/* Language specific search placeholder */
+.search-input[lang="en"]::placeholder {
+  color: hsl(var(--muted-foreground));
+  font-size: 0.875rem;
+}
+
+.search-input[lang="kh"]::placeholder {
+  color: hsl(var(--muted-foreground));
+  font-size: 0.9375rem;
+}
+
+/* Language specific alert messages */
+.alert[lang="en"] {
+  font-size: 0.875rem;
+}
+
+.alert[lang="kh"] {
+  font-size: 0.9375rem;
+}
+
+/* Language navbar adjustments */
+.language-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem;
+  border-radius: var(--radius);
+  background-color: hsl(var(--muted));
+}
+
+.language-selector-item {
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-small);
+  transition: background-color var(--transition-fast) ease;
+}
+
+.language-selector-item:hover {
+  background-color: hsl(var(--muted-foreground) / 10%);
+}
+
+.language-selector-item.active {
+  background-color: hsl(var(--background));
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Language specific form labels */
+label[lang="en"] {
+  font-size: 0.875rem;
+}
+
+label[lang="kh"] {
+  font-size: 0.9375rem;
+}
+
+/* Language specific text content sizing */
+.text-content[lang="en"] {
+  line-height: 1.5;
+}
+
+.text-content[lang="kh"] {
+  line-height: 1.75;
+}
+
+/* RTL Language Support (for future expansion) */
+[dir="rtl"] .search-input {
+  text-align: right;
+}
+
+[dir="rtl"] .ai-result {
+  border-left: none;
+  border-right: 4px solid hsl(var(--primary));
+  padding-left: 0;
+  padding-right: 1rem;
+}

@@ -1,0 +1,63 @@
+{
+  "projectName": "ai-search-knowledge-agent",
+  "version": "1.0.0",
+  "description": "Next.js 15 AI search and knowledge agent",
+  "features": {
+    "search": {
+      "provider": "exa",
+      "apiEndpoint": "https://api.exa.ai",
+      "enableRag": true,
+      "indexSettings": {
+        "chunkSize": 1024,
+        "chunkOverlap": 200
+      }
+    },
+    "database": {
+      "provider": "supabase",
+      "tables": [
+        {
+          "name": "documents",
+          "columns": [
+            {"name": "id", "type": "uuid", "primaryKey": true},
+            {"name": "title", "type": "text"},
+            {"name": "content", "type": "text"},
+            {"name": "url", "type": "text"},
+            {"name": "embedding", "type": "vector"},
+            {"name": "created_at", "type": "timestamp"}
+          ]
+        },
+        {
+          "name": "search_history",
+          "columns": [
+            {"name": "id", "type": "uuid", "primaryKey": true},
+            {"name": "query", "type": "text"},
+            {"name": "user_id", "type": "uuid"},
+            {"name": "results", "type": "jsonb"},
+            {"name": "timestamp", "type": "timestamp"}
+          ]
+        }
+      ]
+    },
+    "authentication": {
+      "enabled": true,
+      "providers": ["email", "google", "github"]
+    },
+    "ui": {
+      "theme": "light",
+      "enableDarkMode": true,
+      "layout": "sidebar",
+      "components": ["searchBar", "filters", "results", "pagination", "history"]
+    }
+  },
+  "deployment": {
+    "vercel": {
+      "enabled": true,
+      "autoDeployment": true,
+      "projectSettings": {
+        "framework": "nextjs",
+        "buildCommand": "npm run build",
+        "outputDirectory": ".next"
+      }
+    }
+  }
+}

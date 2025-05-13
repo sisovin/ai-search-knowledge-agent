@@ -1,0 +1,18 @@
+{
+  "functions": [
+    {
+      "name": "exa-search",
+      "memory": 128,
+      "verify_jwt": false,
+      "description": "Supabase Edge Function for Exa search with rate limiting, caching, and search history tracking",
+      "import_map": "import_map.json"
+    },
+    {
+      "name": "exa-scrape",
+      "memory": 256,
+      "verify_jwt": false,
+      "description": "Supabase Edge Function for scraping web content with Exa API",
+      "import_map": "import_map.json"
+    }
+  ]
+}

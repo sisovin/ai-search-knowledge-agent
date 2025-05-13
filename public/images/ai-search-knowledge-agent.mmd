@@ -1,0 +1,27 @@
+sequenceDiagram
+    autonumber
+    participant User
+    participant UI as Next.js Frontend
+    participant API as Exa API Route
+    participant EdgeFunc as Supabase Edge Function
+    participant Exa as Exa Search API
+    
+    User->>UI: Enter query in SearchInput
+    UI->>API: API Request /api/exa
+    activate API
+    API->>EdgeFunc: Trigger Edge Function
+    activate EdgeFunc
+    EdgeFunc->>Exa: Call Search API
+    activate Exa
+    Exa-->>EdgeFunc: Response
+    deactivate Exa
+    EdgeFunc-->>API: Response
+    deactivate EdgeFunc
+    API-->>UI: Response
+    deactivate API
+    UI-->>User: Display Results with Citations
+    par Loading...
+        UI->>UI: Show Loading State
+    and Error
+        UI->>User: Display Error Message
+    end
