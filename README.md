@@ -6,7 +6,19 @@ This project is built with the latest features of Next.js, including the App Dir
 
 This project is designed to be a comprehensive solution for building advanced search capabilities with a focus on performance, SEO, and user experience. It includes a responsive UI, authentication with multiple providers, and a vector database for semantic search.
 
+<p align="center">
+  <img src="public/images/ai-search-knowledge-agent-dark.png" alt="AI Search Knowledge Agent - Dark Mode" width="100%">
+</p>
+
+<table>
+  <tr>
+    <td width="40%"><img src="public/images/Font-configuration.png" alt="Font Configuration" width="100%"></td>
+    <td width="60%"><img src="public/images/ai-search-knowledge-agent-light.png" alt="AI Search Knowledge Agent - Light Mode" width="100%"></td>
+  </tr>
+</table>
+
 ## Table of Contents
+
 - [AI Search Knowledge Agent](#ai-search-knowledge-agent)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
@@ -166,6 +178,7 @@ This project is licensed under the [MIT License](LICENSE). See the [LICENSE](LIC
 Contributions are welcome! Please read the [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Acknowledgements
+
 - [Next.js](https://nextjs.org/)
 - [Supabase](https://supabase.io/)
 - [Exa API](https://exa.com/)

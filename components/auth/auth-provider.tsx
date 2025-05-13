@@ -8,12 +8,14 @@ type AuthContextType = {
   isAuthenticated: boolean;
   isLoading: boolean;
   user: any | null;
+  error: string | null;
 };
 
 const AuthContext = createContext<AuthContextType>({
   isAuthenticated: false,
   isLoading: true,
   user: null,
+  error: null,
 });
 
 // Custom hook to use the auth context
@@ -23,19 +25,31 @@ export const useAuth = () => useContext(AuthContext);
 function AuthContextProvider({ children }: { children: React.ReactNode }) {
   const { data: session, status } = useSession();
   const [user, setUser] = useState<any>(null);
+  const [error, setError] = useState<string | null>(null);
   const isLoading = status === "loading";
   const isAuthenticated = !!session;
 
   useEffect(() => {
+    // Reset error state when status changes
+    if (status !== "loading") {
+      setError(null);
+    }
+
     if (session?.user) {
       setUser(session.user);
     } else {
       setUser(null);
     }
-  }, [session]);
+
+    // Handle potential error in session
+    if (session?.error) {
+      console.error("Session error:", session.error);
+      setError("Authentication error. Please try again.");
+    }
+  }, [session, status]);
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, isLoading, user }}>
+    <AuthContext.Provider value={{ isAuthenticated, isLoading, user, error }}>
       {children}
     </AuthContext.Provider>
   );

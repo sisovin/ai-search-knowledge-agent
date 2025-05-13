@@ -8,8 +8,16 @@ import { supabase } from "@/lib/supabase";
 import Redis from "ioredis";
 import * as argon2 from "argon2";
 
-// Initialize Redis client for caching
-const redis = new Redis(process.env.REDIS_URL || "redis://localhost:6379");
+// Initialize Redis client for caching - with fallback and error handling
+let redis;
+try {
+  redis = process.env.REDIS_URL
+    ? new Redis(process.env.REDIS_URL)
+    : null;
+} catch (error) {
+  console.warn("Redis connection failed, continuing without Redis:", error);
+  redis = null;
+}
 
 // Create JWT handler for refresh tokens
 const refreshTokenHandler = async (token: any) => {

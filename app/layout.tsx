@@ -1,7 +1,7 @@
 import { AuthProvider } from "@/components/auth/auth-provider";
 import { ModeToggle } from "@/components/mode-toggle";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Inter } from "next/font/google";
+import { inter, jetbrainsMono } from "@/lib/google-fonts";
 import Link from "next/link";
 import "./globals.css";
 import "./language-styles.css";
@@ -22,8 +22,6 @@ import {
 // UI Components
 import { Toaster } from "@/components/ui/toaster";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export const metadata = {
   title: "AI Search Knowledge Agent",
   description: "Next.js 15 AI search and knowledge management application",
@@ -36,7 +34,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={`${inter.variable} ${jetbrainsMono.variable}`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <AuthProvider>
             <div className="flex min-h-screen flex-col md:flex-row">
